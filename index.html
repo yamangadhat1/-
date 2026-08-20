@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>صانع فيديوهات الأحاديث النبوية الشريفة | Hadith Studio Pro</title>
+  <title>موسوعة وصانع فيديوهات الأحاديث النبوية الشاملة</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,12 +15,12 @@
 
   <style>
     :root {
-      --bg-dark: #060a10;
-      --card-bg: rgba(13, 21, 34, 0.82);
+      --bg-dark: #05080e;
+      --card-bg: rgba(11, 18, 30, 0.85);
       --card-border: rgba(212, 175, 55, 0.28);
       --gold-main: #d4af37;
       --gold-light: #f5e7a9;
-      --gold-dark: #a67c00;
+      --gold-dark: #9e7506;
       --emerald: #10b981;
       --emerald-light: #34d399;
       --cyan: #0ea5e9;
@@ -28,28 +28,22 @@
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --radius: 16px;
-      --shadow: 0 12px 35px -10px rgba(0,0,0,0.7);
+      --shadow: 0 14px 40px -10px rgba(0,0,0,0.75);
       --gold-glow: 0 0 25px rgba(212, 175, 55, 0.35);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
     body {
       background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.09) 0%, transparent 45%),
-        radial-gradient(circle at 90% 90%, rgba(212, 175, 55, 0.09) 0%, transparent 45%);
+        radial-gradient(circle at 10% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(212, 175, 55, 0.08) 0%, transparent 40%);
       color: var(--text-main);
       font-family: 'Tajawal', sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
     }
 
     /* Scrollbars */
@@ -59,8 +53,8 @@
 
     /* Header */
     header {
-      padding: 1.1rem 2rem;
-      background: rgba(8, 14, 23, 0.9);
+      padding: 1rem 2rem;
+      background: rgba(7, 12, 20, 0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--card-border);
@@ -72,37 +66,26 @@
       z-index: 100;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .brand { display: flex; align-items: center; gap: 12px; }
 
     .brand-icon {
-      width: 44px;
-      height: 44px;
+      width: 44px; height: 44px;
       background: linear-gradient(135deg, var(--gold-main), var(--gold-dark));
       border-radius: 12px;
-      display: grid;
-      place-items: center;
-      color: #060a10;
-      font-size: 1.3rem;
+      display: grid; place-items: center;
+      color: #05080e; font-size: 1.35rem;
       box-shadow: var(--gold-glow);
     }
 
     .brand-title h1 {
       font-family: 'Reem Kufi', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
+      font-size: 1.25rem; font-weight: 700;
       background: linear-gradient(to left, #ffffff, var(--gold-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .brand-title p {
-      font-size: 0.76rem;
-      color: var(--text-muted);
-    }
+    .brand-title p { font-size: 0.76rem; color: var(--text-muted); }
 
     .header-badge {
       background: rgba(212, 175, 55, 0.12);
@@ -111,19 +94,17 @@
       border-radius: 30px;
       font-size: 0.8rem;
       color: var(--gold-light);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      display: flex; align-items: center; gap: 8px;
     }
 
-    /* Container */
+    /* Main Container */
     .app-container {
-      max-width: 1400px;
+      max-width: 1440px;
       margin: 0 auto;
       padding: 1.25rem;
       width: 100%;
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 1.5rem;
       flex: 1;
     }
@@ -158,27 +139,59 @@
       font-size: 1.05rem;
       font-weight: 700;
       color: var(--gold-light);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      display: flex; align-items: center; gap: 10px;
     }
 
-    /* Search & Categories */
+    /* Library Tabs (Sources) */
+    .library-source-tabs {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 8px;
+      overflow-x: auto;
+    }
+
+    .lib-tab-btn {
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.82rem;
+      white-space: nowrap;
+      display: flex; align-items: center; gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .lib-tab-btn.active {
+      background: rgba(212, 175, 55, 0.2);
+      border-color: var(--gold-main);
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    /* Search & Filters */
+    .search-row {
+      display: flex;
+      gap: 8px;
+    }
+
     .search-box {
       position: relative;
+      flex: 1;
     }
 
     .search-box input {
       width: 100%;
-      background: rgba(6, 10, 16, 0.8);
+      background: rgba(5, 8, 14, 0.85);
       border: 1px solid rgba(212, 175, 55, 0.3);
-      padding: 11px 40px 11px 14px;
-      border-radius: 12px;
+      padding: 10px 38px 10px 14px;
+      border-radius: 10px;
       color: #fff;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-family: inherit;
       outline: none;
-      transition: all 0.3s;
     }
 
     .search-box input:focus {
@@ -188,36 +201,21 @@
 
     .search-box i {
       position: absolute;
-      right: 14px;
-      top: 50%;
+      right: 14px; top: 50%;
       transform: translateY(-50%);
       color: var(--gold-main);
     }
 
-    .categories-bar {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-    }
-
-    .cat-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text-muted);
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      white-space: nowrap;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .cat-btn.active, .cat-btn:hover {
-      background: var(--gold-main);
-      color: #060a10;
-      font-weight: 700;
-      border-color: var(--gold-main);
+    .book-select-dropdown {
+      background: rgba(5, 8, 14, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold-light);
+      padding: 0 12px;
+      border-radius: 10px;
+      font-size: 0.84rem;
+      font-family: inherit;
+      outline: none;
+      min-width: 150px;
     }
 
     /* Hadith List */
@@ -225,16 +223,16 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      max-height: 280px;
+      max-height: 320px;
       overflow-y: auto;
       padding-right: 4px;
     }
 
     .hadith-card {
-      background: rgba(6, 10, 16, 0.6);
+      background: rgba(5, 8, 14, 0.6);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 12px;
-      padding: 0.9rem;
+      padding: 1rem;
       cursor: pointer;
       transition: all 0.25s ease;
     }
@@ -252,10 +250,10 @@
 
     .hadith-text {
       font-family: 'Amiri', serif;
-      font-size: 1.12rem;
-      line-height: 1.8;
+      font-size: 1.15rem;
+      line-height: 1.85;
       color: #fff;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .hadith-meta {
@@ -287,7 +285,29 @@
       border: 1px solid rgba(14, 165, 233, 0.4);
     }
 
-    /* Advanced Audio Modes Tabs */
+    /* Custom Text Editor */
+    .custom-hadith-editor {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .custom-hadith-editor textarea {
+      width: 100%;
+      height: 110px;
+      background: rgba(5, 8, 14, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 10px;
+      padding: 10px;
+      color: #fff;
+      font-family: 'Amiri', serif;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      resize: vertical;
+      outline: none;
+    }
+
+    /* Audio Studio Tabs */
     .audio-tabs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -296,7 +316,7 @@
 
     .audio-tab-btn {
       padding: 10px 8px;
-      background: rgba(6, 10, 16, 0.6);
+      background: rgba(5, 8, 14, 0.6);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 10px;
       color: var(--text-muted);
@@ -310,57 +330,23 @@
       transition: all 0.2s;
     }
 
-    .audio-tab-btn i { font-size: 1.1rem; }
-
     .audio-tab-btn.active {
       background: rgba(212, 175, 55, 0.15);
       border-color: var(--gold-main);
       color: var(--gold-light);
       font-weight: 700;
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
     }
 
     .audio-config-box {
-      background: rgba(6, 10, 16, 0.7);
+      background: rgba(5, 8, 14, 0.7);
       border: 1px solid rgba(212, 175, 55, 0.2);
       border-radius: 12px;
-      padding: 1rem;
+      padding: 0.9rem;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    /* Audio Studio Master Effects */
-    .effects-toggles {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding-top: 6px;
-      border-top: 1px dashed rgba(255,255,255,0.1);
-    }
-
-    .effect-pill {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--text-muted);
-      transition: all 0.2s;
-    }
-
-    .effect-pill.active {
-      background: rgba(16, 185, 129, 0.2);
-      border-color: var(--emerald-light);
-      color: var(--emerald-light);
-      font-weight: 700;
-    }
-
-    /* Mic Record UI */
     .mic-record-box {
       display: flex;
       align-items: center;
@@ -375,12 +361,10 @@
       background: var(--rose);
       color: #fff;
       border: none;
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       border-radius: 50%;
       cursor: pointer;
-      display: grid;
-      place-items: center;
+      display: grid; place-items: center;
       font-size: 1.1rem;
       transition: all 0.2s;
     }
@@ -395,29 +379,48 @@
       to { transform: scale(1.15); box-shadow: 0 0 20px rgba(244, 63, 94, 0.8); }
     }
 
-    /* Settings Grid */
+    .effects-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .effect-pill {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      display: flex; align-items: center; gap: 6px;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .effect-pill.active {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: var(--emerald-light);
+      color: var(--emerald-light);
+      font-weight: 700;
+    }
+
+    /* Video & Settings Grid */
     .settings-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 10px;
     }
 
-    .setting-group {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
+    .setting-group { display: flex; flex-direction: column; gap: 5px; }
 
     .setting-label {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--gold-light);
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      display: flex; align-items: center; gap: 6px;
     }
 
     .select-input, .text-input {
-      background: rgba(6, 10, 16, 0.85);
+      background: rgba(5, 8, 14, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: #fff;
       padding: 8px 10px;
@@ -427,9 +430,7 @@
       outline: none;
     }
 
-    .select-input:focus, .text-input:focus {
-      border-color: var(--gold-main);
-    }
+    .select-input:focus, .text-input:focus { border-color: var(--gold-main); }
 
     /* Studio & Preview */
     .studio-panel {
@@ -461,7 +462,6 @@
       display: block;
     }
 
-    /* Action Buttons */
     .action-bar {
       display: flex;
       flex-direction: column;
@@ -472,17 +472,14 @@
 
     .btn-main {
       background: linear-gradient(135deg, var(--gold-main), var(--gold-dark));
-      color: #060a10;
+      color: #05080e;
       font-weight: 800;
       font-size: 1.02rem;
       border: none;
       padding: 13px;
       border-radius: 12px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
       transition: all 0.3s;
       box-shadow: var(--gold-glow);
     }
@@ -500,42 +497,28 @@
       border-radius: 8px;
       cursor: pointer;
       font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
       transition: all 0.2s;
     }
 
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.15);
-    }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.15); }
 
-    /* Record Overlay */
+    /* Overlay & Modal */
     .record-status-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(6, 10, 16, 0.9);
+      position: absolute; inset: 0;
+      background: rgba(5, 8, 14, 0.9);
       backdrop-filter: blur(8px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      z-index: 20;
-      opacity: 0;
-      pointer-events: none;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 14px; z-index: 20;
+      opacity: 0; pointer-events: none;
       transition: opacity 0.3s;
     }
 
-    .record-status-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    .record-status-overlay.active { opacity: 1; pointer-events: auto; }
 
     .spinner {
-      width: 46px;
-      height: 46px;
+      width: 44px; height: 44px;
       border: 4px solid rgba(212, 175, 55, 0.2);
       border-top-color: var(--gold-main);
       border-radius: 50%;
@@ -544,56 +527,37 @@
 
     @keyframes spin { 100% { transform: rotate(360deg); } }
 
-    /* Modal */
     .modal-overlay {
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background: rgba(0,0,0,0.85);
       backdrop-filter: blur(12px);
-      display: grid;
-      place-items: center;
-      z-index: 200;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-      padding: 1rem;
+      display: grid; place-items: center;
+      z-index: 200; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s; padding: 1rem;
     }
 
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
 
     .modal-content {
-      background: #0d1522;
+      background: #0b121e;
       border: 1px solid var(--gold-main);
       border-radius: 20px;
       padding: 1.4rem;
-      max-width: 480px;
-      width: 100%;
+      max-width: 480px; width: 100%;
       box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      display: flex; flex-direction: column; gap: 1rem;
     }
 
     .video-preview-player {
-      width: 100%;
-      max-height: 300px;
-      border-radius: 12px;
-      background: #000;
+      width: 100%; max-height: 300px;
+      border-radius: 12px; background: #000;
     }
 
     .modal-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
     }
 
-    @media (max-width: 480px) {
-      .modal-actions { grid-template-columns: 1fr; }
-    }
-
+    @media (max-width: 480px) { .modal-actions { grid-template-columns: 1fr; } }
     .hidden-input { display: none; }
   </style>
 </head>
@@ -606,13 +570,13 @@
         <i class="fa-solid fa-kaaba"></i>
       </div>
       <div class="brand-title">
-        <h1>صانع فيديوهات الأحاديث النبوية</h1>
-        <p>استوديو الإلقاء الصوتي البشري والإنتاج السينمائي</p>
+        <h1>الجامع وصانع فيديوهات الأحاديث النبوية</h1>
+        <p>الوصول لكافة كتب الحديث النبوي والإنتاج المرئي فائق الجودة</p>
       </div>
     </div>
     <div class="header-badge">
-      <i class="fa-solid fa-microphone-lines" style="color:var(--emerald-light)"></i>
-      <span>هندسة صوتية خاشعة (Studio Reverb)</span>
+      <i class="fa-solid fa-book-bookmark" style="color:var(--emerald-light)"></i>
+      <span>+50,000 حديث كاملة</span>
     </div>
   </header>
 
@@ -621,78 +585,92 @@
     
     <!-- Left Column -->
     <div class="panel">
-      <!-- 1. Hadith Explorer -->
+      <!-- 1. Universal Hadith Explorer -->
       <div class="panel-header">
         <div class="panel-title">
-          <i class="fa-solid fa-book-open-reader"></i>
-          <span>1. الحديث النبوي الشريف</span>
+          <i class="fa-solid fa-book-quran"></i>
+          <span>1. المكتبة الحديثية الشاملة</span>
+        </div>
+        <button id="randomHadithBtn" class="btn-secondary" style="font-size: 0.78rem; padding: 4px 10px;">
+          <i class="fa-solid fa-shuffle"></i> حديث عشوائي
+        </button>
+      </div>
+
+      <!-- Source Switcher Tabs -->
+      <div class="library-source-tabs">
+        <button class="lib-tab-btn active" id="srcEncTab">
+          <i class="fa-solid fa-globe"></i> موسوعة الأحاديث المشروحة
+        </button>
+        <button class="lib-tab-btn" id="srcBooksTab">
+          <i class="fa-solid fa-books"></i> الكتب التسعة والصحاح
+        </button>
+        <button class="lib-tab-btn" id="srcCustomTab">
+          <i class="fa-solid fa-pen-fancy"></i> كتابة / تعديل يدوي
+        </button>
+      </div>
+
+      <!-- Search & Book Filters (For Encyclopedia & Books) -->
+      <div id="searchControlsRow">
+        <div class="search-row">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="ابحث بأي كلمة، راوٍ، أو رقم حديث في كافة الكتب...">
+          </div>
+          <select id="bookSelector" class="book-select-dropdown" style="display:none;">
+            <option value="bukhari" selected>صحيح البخاري (7,563)</option>
+            <option value="muslim">صحيح مسلم (7,500+)</option>
+            <option value="riyad">رياض الصالحين (1,900)</option>
+            <option value="nawawi40">الأربعون النووية (42)</option>
+            <option value="tirmidhi">جامع الترمذي (3,956)</option>
+            <option value="abudawud">سنن أبي داود (5,274)</option>
+            <option value="nasai">سنن النسائي (5,758)</option>
+            <option value="ibnmajah">سنن ابن ماجه (4,341)</option>
+          </select>
         </div>
       </div>
 
-      <div class="search-box">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="searchInput" placeholder="ابحث بنص الحديث، الراوي، أو الموضوع...">
+      <!-- Custom Editor (Shown only in manual mode) -->
+      <div id="customEditorSection" class="custom-hadith-editor" style="display:none;">
+        <textarea id="customHadithText" placeholder="اكتب أو الصق نص الحديث الشريف هنا مشكولاً..."></textarea>
+        <div class="settings-grid">
+          <input type="text" id="customNarrator" class="text-input" placeholder="الراوي (مثال: أبو هريرة رضي الله عنه)">
+          <input type="text" id="customSource" class="text-input" placeholder="المصدر (مثال: رواه البخاري)">
+        </div>
       </div>
 
-      <div class="categories-bar" id="categoryTabs">
-        <button class="cat-btn active" data-cat="all">الكل</button>
-        <button class="cat-btn" data-cat="الأخلاق">الأخلاق والنية</button>
-        <button class="cat-btn" data-cat="الصلاة">الصلاة والذكر</button>
-        <button class="cat-btn" data-cat="التوبة">التوبة والرجاء</button>
-        <button class="cat-btn" data-cat="الصبر">الصبر والفرج</button>
-        <button class="cat-btn" data-cat="البر">بر الوالدين</button>
-      </div>
-
+      <!-- Hadith Cards List Container -->
       <div class="hadith-list" id="hadithList">
-        <!-- Rendered via JS -->
+        <!-- Rendered Dynamically -->
       </div>
 
-      <!-- 2. Human Voice & Studio Audio Options -->
+      <!-- 2. Human Voice & Studio Audio Engine -->
       <div class="panel-header" style="margin-top: 8px;">
         <div class="panel-title">
-          <i class="fa-solid fa-waveform-lines"></i>
-          <span>2. محرك الصوت البشري الواقعي</span>
+          <i class="fa-solid fa-microphone-lines"></i>
+          <span>2. التعليق الصوتي واستوديو المحراب</span>
         </div>
       </div>
 
-      <!-- Audio Source Selector Tabs -->
       <div class="audio-tabs-grid">
         <button class="audio-tab-btn active" id="tabPresetVoice">
           <i class="fa-solid fa-user-tie"></i>
-          <span>أصوات بشرية استوديو</span>
+          <span>قارئ فصيح</span>
         </button>
         <button class="audio-tab-btn" id="tabMic">
           <i class="fa-solid fa-microphone"></i>
-          <span>تسجيل بصوتك</span>
+          <span>تسجيل صوتك</span>
         </button>
         <button class="audio-tab-btn" id="tabUpload">
           <i class="fa-solid fa-file-audio"></i>
           <span>رفع ملف MP3</span>
         </button>
-        <button class="audio-tab-btn" id="tabAI">
-          <i class="fa-solid fa-wand-magic-sparkles"></i>
-          <span>ذكاء اصطناعي (AI)</span>
-        </button>
       </div>
 
-      <!-- Audio Config Panels -->
-      <!-- Panel 1: Presets -->
-      <div id="cfgPreset" class="audio-config-box">
-        <div class="setting-group">
-          <label class="setting-label"><i class="fa-solid fa-headset"></i> اختيار نبرة القارئ البشري المعتمد</label>
-          <select id="presetVoiceSelect" class="select-input">
-            <option value="human_1" selected>صوت الشيخ القارئ (نبرة نجدية هادئة وخاشعة)</option>
-            <option value="human_2">صوت الراوي الفصيح (نبرة وثائقية إذاعية فخمة)</option>
-            <option value="human_3">صوت ترتيل هادئ (نبرة نسيم الأسحار)</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Panel 2: Live Mic -->
+      <!-- Studio Mic Option -->
       <div id="cfgMic" class="audio-config-box" style="display:none;">
         <div class="mic-record-box">
           <div style="font-size: 0.82rem;">
-            <div style="font-weight:700; color:var(--gold-light);" id="micStatusText">اضغط على الزر لبدء التسجيل بصوتك</div>
+            <div style="font-weight:700; color:var(--gold-light);" id="micStatusText">سجّل قراءتك للحديث بصوتك</div>
             <div style="color:var(--text-muted); font-size:0.75rem;" id="micTimer">00:00</div>
           </div>
           <button id="micRecordBtn" class="record-btn-mic">
@@ -701,44 +679,29 @@
         </div>
       </div>
 
-      <!-- Panel 3: Upload MP3 -->
+      <!-- Studio Upload Option -->
       <div id="cfgUpload" class="audio-config-box" style="display:none;">
         <input type="file" id="audioFileInput" accept="audio/*" class="hidden-input">
         <button class="btn-secondary" onclick="document.getElementById('audioFileInput').click()">
-          <i class="fa-solid fa-upload"></i> اختر ملف تسجيل صوتي بشري من جهازك
+          <i class="fa-solid fa-upload"></i> اختر ملف صوتي (MP3 / M4A) من جهازك
         </button>
         <span id="audioFileName" style="font-size: 0.78rem; color: var(--gold-light);"></span>
       </div>
 
-      <!-- Panel 4: ElevenLabs / Neural AI -->
-      <div id="cfgAI" class="audio-config-box" style="display:none;">
-        <div class="setting-group">
-          <label class="setting-label"><i class="fa-solid fa-key"></i> مفتاح ElevenLabs / OpenAI API (اختياري للصوت الفائق)</label>
-          <input type="password" id="aiApiKeyInput" class="text-input" placeholder="ألصق مفتاحك للحصول على صوتك المخصص...">
-        </div>
-        <div class="setting-group">
-          <label class="setting-label"><i class="fa-solid fa-person-rays"></i> نبرة الذكاء الاصطناعي الفصيحة</label>
-          <select id="aiVoiceModel" class="select-input">
-            <option value="ar_shakir">حمزة / شاكر - نبرة فصيحة روائية حية</option>
-            <option value="ar_fatima">فاطمة - قراءة هادئة ومتزنة</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Studio Reverb & Effects Switches -->
+      <!-- Studio Acoustic Filters -->
       <div class="effects-toggles">
         <div class="effect-pill active" id="effReverb">
-          <i class="fa-solid fa-mosque"></i> صدى واستوديو المحراب (Reverb)
+          <i class="fa-solid fa-mosque"></i> صدى المحراب (Studio Reverb)
         </div>
         <div class="effect-pill active" id="effBass">
-          <i class="fa-solid fa-sliders"></i> فخامة الصوت الإذاعي (Warm Bass)
+          <i class="fa-solid fa-sliders"></i> الدفء الإذاعي (Warm EQ)
         </div>
       </div>
 
-      <!-- 3. Video Aesthetics & Motion Settings -->
+      <!-- 3. Visuals & Aesthetics -->
       <div class="panel-header" style="margin-top: 8px;">
         <div class="panel-title">
-          <i class="fa-solid fa-sliders"></i>
+          <i class="fa-solid fa-palette"></i>
           <span>3. الإخراج الفني والخلفية</span>
         </div>
       </div>
@@ -747,14 +710,14 @@
         <div class="setting-group">
           <label class="setting-label"><i class="fa-solid fa-expand"></i> المقاس</label>
           <select id="aspectRatioSelect" class="select-input">
-            <option value="9:16" selected>طولي (9:16) Reels / TikTok</option>
+            <option value="9:16" selected>طولي (9:16) Reels / Shorts / TikTok</option>
             <option value="16:9">عرضي (16:9) YouTube</option>
             <option value="1:1">مربع (1:1) Instagram Feed</option>
           </select>
         </div>
 
         <div class="setting-group">
-          <label class="setting-label"><i class="fa-solid fa-palette"></i> الخلفية المتحركة</label>
+          <label class="setting-label"><i class="fa-solid fa-image"></i> الخلفية المتحركة</label>
           <select id="bgStyleSelect" class="select-input">
             <option value="stars" selected>سماء ليلية وجزيئات ذهبية</option>
             <option value="royal">أسود ملكي وزخارف مذهبة</option>
@@ -780,7 +743,7 @@
 
     </div>
 
-    <!-- Right Column: Studio -->
+    <!-- Right Column: Studio Production -->
     <div class="panel studio-panel">
       <div class="panel-header" style="width: 100%;">
         <div class="panel-title">
@@ -795,7 +758,7 @@
         <div class="record-status-overlay" id="recordOverlay">
           <div class="spinner"></div>
           <div style="font-weight: 700; color: var(--gold-light); font-size: 1.1rem;" id="progressStatusText">
-            جاري معالجة الصوت البشري ورندرة الفيديو...
+            جاري رندرة وتوليد الفيديو الفائق...
           </div>
           <div style="font-size: 0.85rem; color: var(--text-muted);">يرجى الانتظار ثوانٍ معدودة</div>
         </div>
@@ -803,10 +766,10 @@
 
       <div class="action-bar">
         <button id="previewVoiceBtn" class="btn-secondary" style="width: 100%;">
-          <i class="fa-solid fa-play"></i> استماع للإلقاء الصوتي البشري مع المؤثرات
+          <i class="fa-solid fa-play"></i> استماع للإلقاء الصوتي مع المؤثرات
         </button>
         <button id="generateVideoBtn" class="btn-main">
-          <i class="fa-solid fa-video"></i> تصدير الفيديو بالصوت البشري الفاخر (MP4)
+          <i class="fa-solid fa-video"></i> تصدير الفيديو عالي الدقة (MP4)
         </button>
       </div>
     </div>
@@ -819,7 +782,7 @@
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <h3 style="color: var(--gold-light); font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
           <i class="fa-solid fa-circle-check" style="color: var(--emerald-light);"></i>
-          تم تجهيز الفيديو بنجاح!
+          تم إنشاء الفيديو بنجاح!
         </h3>
         <button id="closeModalBtn" style="background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;">
           <i class="fa-solid fa-xmark"></i>
@@ -842,77 +805,108 @@
     </div>
   </div>
 
-  <!-- Audio Elements -->
   <audio id="realAudioPlayer" style="display:none;" crossorigin="anonymous"></audio>
 
   <script>
     /* ==========================================================
-       1. Database: Authentic Hadiths with Real Human Audio URLs
+       1. Massive Hadith Database Cache & Core Canonical Set
        ========================================================== */
-    const HADITH_DB = [
+    const CORE_HADITHS = [
       {
         id: 1,
         text: "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى، فَمَنْ كَانَتْ هِجْرَتُهُ إِلَى اللهِ وَرَسُولِهِ، فَهِجْرَتُهُ إِلَى اللهِ وَرَسُولِهِ.",
         narrator: "عمر بن الخطاب رضي الله عنه",
-        source: "صحيح البخاري ومسلم",
+        source: "صحيح البخاري (1)",
         grade: "صحيح",
-        category: "الأخلاق",
-        sharh: "النية هي معيار قبول الأعمال؛ فمن قصد بعمله وجه الله نال القبول والتوفيق العظيم.",
-        // Authentic Human Narration Studio Audio Source
-        audioUrl: "https://actions.google.com/sounds/v1/ambiences/humming_meditation.ogg" // placeholder fallback
+        sharh: "النية هي معيار قبول الأعمال؛ فمن قصد بعمله وجه الله نال الأجر والتوفيق."
       },
       {
         id: 2,
         text: "مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا، سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ.",
         narrator: "أبو هريرة رضي الله عنه",
-        source: "صحيح مسلم",
+        source: "صحيح مسلم (2699)",
         grade: "صحيح",
-        category: "الأخلاق",
-        sharh: "فضل طلب العلم النافع، وأنه من أوسع الطرق الموصلة إلى مرضاة الله والجنة.",
-        audioUrl: ""
+        sharh: "فضل طلب العلم النافع وأنه من أعظم الطرق الموصلة لمرضاة الله ودخول جناته."
       },
       {
         id: 3,
         text: "عَجَبًا لِأَمْرِ الْمُؤْمِنِ، إِنَّ أَمْرَهُ كُلَّهُ خَيْرٌ، وَلَيْسَ ذَاكَ لِأَحَدٍ إِلَّا لِلْمُؤْمِنِ، إِنْ أَصَابَتْهُ سَرَّاءُ شَكَرَ فَكَانَ خَيْرًا لَهُ، وَإِنْ أَصَابَتْهُ ضَرَّاءُ صَبَرَ فَكَانَ خَيْرًا لَهُ.",
         narrator: "صهيب بن سنان رضي الله عنه",
-        source: "صحيح مسلم",
+        source: "صحيح مسلم (2999)",
         grade: "صحيح",
-        category: "الصبر",
-        sharh: "المؤمن في كل أحواله رابح ومأجور بين الشكر في الرخاء والصبر في الشدة.",
-        audioUrl: ""
+        sharh: "المؤمن يتقلب بين مقامي الشكر في الرخاء والصبر في الشدة، وكلاهما خير عظيم."
       },
       {
         id: 4,
         text: "التَّائِبُ مِنَ الذَّنْبِ كَمَنْ لَا ذَنْبَ لَهُ.",
         narrator: "عبد الله بن مسعود رضي الله عنه",
-        source: "سنن ابن ماجه",
+        source: "سنن ابن ماجه (4250)",
         grade: "حسن",
-        category: "التوبة",
-        sharh: "سعة مغفرة الله ورحمته؛ فالتوبة الصادقة تمحو أثر الذنب تماماً.",
-        audioUrl: ""
+        sharh: "سعة مغفرة الله ورحمته، حيث تمحو التوبة الصادقة أثر الخطيئة بالكلية."
       },
       {
         id: 5,
         text: "رِضَا الرَّبِّ فِي رِضَا الْوَالِدِ، وَسَخَطُ الرَّبِّ فِي سَخَطِ الْوَالِدِ.",
         narrator: "عبد الله بن عمرو رضي الله عنهما",
-        source: "جامع الترمذي",
+        source: "جامع الترمذي (1899)",
         grade: "صحيح",
-        category: "البر",
-        sharh: "بر الوالدين من أعظم القربات التي ينال بها العبد رضا الله وتوفيقه.",
-        audioUrl: ""
+        sharh: "عظم حق الوالدين وبرهما، وأن إرضاءهما سبب مباشر لرضا الله سبحانه."
+      },
+      {
+        id: 6,
+        text: "مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ، وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيُكْرِمْ جَارَهُ.",
+        narrator: "أبو هريرة رضي الله عنه",
+        source: "صحيح البخاري ومسلم",
+        grade: "صحيح",
+        sharh: "الحث على حفظ اللسان وحسن الجوار كعلامة من علامات كمال الإيمان."
+      },
+      {
+        id: 7,
+        text: "كَلِمَتَانِ خَفِيفَتَانِ عَلَى اللِّسَانِ، ثَقِيلَتَانِ فِي الْمِيزَانِ، حَبِيبَتَانِ إِلَى الرَّحْمَنِ: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ.",
+        narrator: "أبو هريرة رضي الله عنه",
+        source: "صحيح البخاري (6682)",
+        grade: "صحيح",
+        sharh: "فضل التسبيح والذكر وأنه يثقل الميزان عند الله رغم سهولته على اللسان."
       }
     ];
 
+    // Book edition CDN mappings (Fawaz Ahmed Hadith API with 50,000+ hadiths)
+    const BOOK_CDN_MAP = {
+      bukhari: 'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari.min.json',
+      muslim: 'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim.min.json',
+      riyad: 'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-riyadussalihin.min.json',
+      nawawi40: 'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-nawawi40.min.json',
+      tirmidhi: 'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi.min.json',
+      abudawud: 'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud.min.json',
+      nasai: 'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-nasai.min.json',
+      ibnmajah: 'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah.min.json'
+    };
+
+    const BOOK_NAMES_AR = {
+      bukhari: 'صحيح البخاري',
+      muslim: 'صحيح مسلم',
+      riyad: 'رياض الصالحين',
+      nawawi40: 'الأربعون النووية',
+      tirmidhi: 'جامع الترمذي',
+      abudawud: 'سنن أبي داود',
+      nasai: 'سنن النسائي',
+      ibnmajah: 'سنن ابن ماجه'
+    };
+
+    const loadedBookCache = {};
+
     /* ==========================================================
-       2. Application State & Global References
+       2. Application State
        ========================================================== */
     const state = {
-      selectedHadith: HADITH_DB[0],
+      selectedHadith: CORE_HADITHS[0],
+      currentSourceMode: 'enc', // 'enc', 'books', 'custom'
+      activeHadithList: [...CORE_HADITHS],
       aspectRatio: "9:16",
       bgStyle: "stars",
       animMode: "kinetic",
       watermark: "صدقة جارية • شارك تؤجر",
-      audioMode: "preset", // 'preset', 'mic', 'upload', 'ai'
+      audioMode: "preset",
       effects: { reverb: true, bass: true },
       customAudioBlob: null,
       customAudioUrl: null,
@@ -929,17 +923,16 @@
       audioDuration: 7
     };
 
-    // Canvas & Web Audio
+    // Canvas & Audio Nodes
     const canvas = document.getElementById('videoCanvas');
     const ctx = canvas.getContext('2d');
     let audioCtx = null;
     let analyserNode = null;
     let dataArray = new Uint8Array(64);
-    let masterAudioSource = null;
     let audioDestNode = null;
     let realAudioPlayer = document.getElementById('realAudioPlayer');
 
-    // Floating Gold Particles
+    // Floating Particles
     const particles = [];
     for (let i = 0; i < 40; i++) {
       particles.push({
@@ -952,48 +945,61 @@
     }
 
     /* ==========================================================
-       3. Initialization & Event Setup
+       3. Initialization
        ========================================================== */
     window.addEventListener('DOMContentLoaded', () => {
-      renderHadithCards(HADITH_DB);
+      renderHadithCards(CORE_HADITHS);
       updateCanvasResolution();
-      setupEvents();
+      setupEventListeners();
       startCanvasLoop();
+      // Pre-load initial encyclopedia items
+      fetchEncyclopediaHadiths();
     });
 
-    function setupEvents() {
-      // Search
+    function setupEventListeners() {
+      // Source Switcher
+      document.getElementById('srcEncTab').addEventListener('click', () => switchSourceMode('enc'));
+      document.getElementById('srcBooksTab').addEventListener('click', () => switchSourceMode('books'));
+      document.getElementById('srcCustomTab').addEventListener('click', () => switchSourceMode('custom'));
+
+      // Search Box with Debounce
+      let searchTimeout;
       document.getElementById('searchInput').addEventListener('input', (e) => {
-        const val = e.target.value.trim().toLowerCase();
-        const filtered = HADITH_DB.filter(h => h.text.toLowerCase().includes(val) || h.narrator.toLowerCase().includes(val) || h.category.includes(val));
-        renderHadithCards(filtered);
+        clearTimeout(searchTimeout);
+        const query = e.target.value.trim();
+        searchTimeout = setTimeout(() => {
+          handleSearch(query);
+        }, 400);
       });
 
-      // Categories
-      document.getElementById('categoryTabs').addEventListener('click', (e) => {
-        if (!e.target.classList.contains('cat-btn')) return;
-        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
-        const cat = e.target.getAttribute('data-cat');
-        renderHadithCards(cat === 'all' ? HADITH_DB : HADITH_DB.filter(h => h.category === cat));
+      // Book Dropdown Change
+      document.getElementById('bookSelector').addEventListener('change', (e) => {
+        loadBookData(e.target.value);
       });
 
-      // Audio Tabs
-      const tabs = [
-        { btn: 'tabPresetVoice', cfg: 'cfgPreset', mode: 'preset' },
+      // Random Hadith Button
+      document.getElementById('randomHadithBtn').addEventListener('click', pickRandomHadith);
+
+      // Custom Hadith Inputs
+      document.getElementById('customHadithText').addEventListener('input', updateCustomHadith);
+      document.getElementById('customNarrator').addEventListener('input', updateCustomHadith);
+      document.getElementById('customSource').addEventListener('input', updateCustomHadith);
+
+      // Audio Tab Switching
+      const audioTabs = [
+        { btn: 'tabPresetVoice', cfg: null, mode: 'preset' },
         { btn: 'tabMic', cfg: 'cfgMic', mode: 'mic' },
-        { btn: 'tabUpload', cfg: 'cfgUpload', mode: 'upload' },
-        { btn: 'tabAI', cfg: 'cfgAI', mode: 'ai' }
+        { btn: 'tabUpload', cfg: 'cfgUpload', mode: 'upload' }
       ];
 
-      tabs.forEach(t => {
+      audioTabs.forEach(t => {
         document.getElementById(t.btn).addEventListener('click', () => {
-          tabs.forEach(x => {
+          audioTabs.forEach(x => {
             document.getElementById(x.btn).classList.remove('active');
-            document.getElementById(x.cfg).style.display = 'none';
+            if (x.cfg) document.getElementById(x.cfg).style.display = 'none';
           });
           document.getElementById(t.btn).classList.add('active');
-          document.getElementById(t.cfg).style.display = 'flex';
+          if (t.cfg) document.getElementById(t.cfg).style.display = 'flex';
           state.audioMode = t.mode;
         });
       });
@@ -1009,10 +1015,10 @@
         this.classList.toggle('active', state.effects.bass);
       });
 
-      // Mic Recording Trigger
+      // Microphone Recording
       document.getElementById('micRecordBtn').addEventListener('click', toggleMicRecording);
 
-      // Custom Audio File Upload
+      // Custom File Upload
       document.getElementById('audioFileInput').addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -1026,12 +1032,13 @@
         }
       });
 
-      // Video Controls
+      // Video Aspect Ratio
       document.getElementById('aspectRatioSelect').addEventListener('change', (e) => {
         state.aspectRatio = e.target.value;
         updateCanvasResolution();
       });
 
+      // Background Style
       document.getElementById('bgStyleSelect').addEventListener('change', (e) => {
         state.bgStyle = e.target.value;
         if (e.target.value === 'custom') document.getElementById('customBgInput').click();
@@ -1054,6 +1061,7 @@
         state.watermark = e.target.value;
       });
 
+      // Buttons
       document.getElementById('previewVoiceBtn').addEventListener('click', togglePreviewPlayback);
       document.getElementById('generateVideoBtn').addEventListener('click', generateFinalVideo);
 
@@ -1064,8 +1072,212 @@
     }
 
     /* ==========================================================
-       4. Audio Engine: Studio Reverb, EQ & Real Sound Processing
+       4. Hadith Library Engine: Search & Loading
        ========================================================== */
+    function switchSourceMode(mode) {
+      state.currentSourceMode = mode;
+      document.querySelectorAll('.lib-tab-btn').forEach(b => b.classList.remove('active'));
+      
+      const searchControls = document.getElementById('searchControlsRow');
+      const bookDropdown = document.getElementById('bookSelector');
+      const customEditor = document.getElementById('customEditorSection');
+      const hadithList = document.getElementById('hadithList');
+
+      if (mode === 'enc') {
+        document.getElementById('srcEncTab').classList.add('active');
+        searchControls.style.display = 'block';
+        bookDropdown.style.display = 'none';
+        customEditor.style.display = 'none';
+        hadithList.style.display = 'flex';
+        fetchEncyclopediaHadiths();
+      } else if (mode === 'books') {
+        document.getElementById('srcBooksTab').classList.add('active');
+        searchControls.style.display = 'block';
+        bookDropdown.style.display = 'block';
+        customEditor.style.display = 'none';
+        hadithList.style.display = 'flex';
+        loadBookData(bookDropdown.value);
+      } else {
+        document.getElementById('srcCustomTab').classList.add('active');
+        searchControls.style.display = 'none';
+        customEditor.style.display = 'flex';
+        hadithList.style.display = 'none';
+        updateCustomHadith();
+      }
+    }
+
+    async function handleSearch(query) {
+      if (state.currentSourceMode === 'enc') {
+        if (!query) {
+          fetchEncyclopediaHadiths();
+          return;
+        }
+        document.getElementById('hadithList').innerHTML = `<div style="text-align:center; padding:2rem; color:var(--gold-light)"><i class="fa-solid fa-spinner fa-spin"></i> جاري البحث في آلاف الأحاديث...</div>`;
+        try {
+          const res = await fetch(`https://hadeethenc.com/api/v1/hadeeths/search/?language=ar&phrase=${encodeURIComponent(query)}`);
+          const data = await res.json();
+          if (data && data.data && data.data.length > 0) {
+            const list = data.data.map(item => ({
+              id: item.id,
+              text: item.hadeeth || item.title,
+              narrator: item.attribution || "صحابي جليل رضي الله عنه",
+              source: item.reference || "موسوعة الحديث الشريف",
+              grade: item.grade || "صحيح",
+              sharh: item.explanation || "حديث نبوي شريف."
+            }));
+            renderHadithCards(list);
+          } else {
+            // Local fallback filter
+            filterLocalCache(query);
+          }
+        } catch (e) {
+          filterLocalCache(query);
+        }
+      } else if (state.currentSourceMode === 'books') {
+        const bookKey = document.getElementById('bookSelector').value;
+        if (loadedBookCache[bookKey]) {
+          const list = loadedBookCache[bookKey].filter(h => h.text.includes(query) || (h.hadithnumber && String(h.hadithnumber) === query));
+          renderHadithCards(list.slice(0, 50));
+        }
+      }
+    }
+
+    function filterLocalCache(query) {
+      const q = query.replace(/[\u064B-\u065F\u0670]/g, "").toLowerCase();
+      const filtered = CORE_HADITHS.filter(h => {
+        const t = h.text.replace(/[\u064B-\u065F\u0670]/g, "").toLowerCase();
+        return t.includes(q) || h.narrator.includes(q);
+      });
+      renderHadithCards(filtered.length ? filtered : CORE_HADITHS);
+    }
+
+    async function fetchEncyclopediaHadiths() {
+      const listContainer = document.getElementById('hadithList');
+      listContainer.innerHTML = `<div style="text-align:center; padding:2rem; color:var(--gold-light)"><i class="fa-solid fa-spinner fa-spin"></i> جاري تحميل الأحاديث النبوية...</div>`;
+      try {
+        const res = await fetch('https://hadeethenc.com/api/v1/hadeeths/list/?language=ar&category_id=1&per_page=25');
+        const data = await res.json();
+        if (data && data.data && data.data.length > 0) {
+          const list = data.data.map(item => ({
+            id: item.id,
+            text: item.title,
+            narrator: item.attribution || "صحابي جليل رضي الله عنه",
+            source: "موسوعة الأحاديث النبوية",
+            grade: item.grade || "صحيح",
+            sharh: "حديث نبوي شريف."
+          }));
+          renderHadithCards(list);
+        } else {
+          renderHadithCards(CORE_HADITHS);
+        }
+      } catch (e) {
+        renderHadithCards(CORE_HADITHS);
+      }
+    }
+
+    async function loadBookData(bookKey) {
+      const listContainer = document.getElementById('hadithList');
+      if (loadedBookCache[bookKey]) {
+        renderHadithCards(loadedBookCache[bookKey].slice(0, 40));
+        return;
+      }
+
+      listContainer.innerHTML = `<div style="text-align:center; padding:2rem; color:var(--gold-light)"><i class="fa-solid fa-spinner fa-spin"></i> جاري تحميل ${BOOK_NAMES_AR[bookKey]} كاملاً...</div>`;
+      try {
+        const url = BOOK_CDN_MAP[bookKey];
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (data && data.hadiths) {
+          const items = data.hadiths
+            .filter(h => h.text && h.text.trim().length > 15)
+            .map((h, index) => ({
+              id: `${bookKey}_${h.hadithnumber || index + 1}`,
+              text: h.text,
+              narrator: "عن رسول الله ﷺ",
+              source: `${BOOK_NAMES_AR[bookKey]} • حديث رقم (${h.hadithnumber || index + 1})`,
+              grade: (h.grades && h.grades.length) ? h.grades[0].grade : "صحيح",
+              hadithnumber: h.hadithnumber || index + 1
+            }));
+
+          loadedBookCache[bookKey] = items;
+          renderHadithCards(items.slice(0, 40));
+        } else {
+          renderHadithCards(CORE_HADITHS);
+        }
+      } catch (e) {
+        renderHadithCards(CORE_HADITHS);
+      }
+    }
+
+    function renderHadithCards(list) {
+      state.activeHadithList = list;
+      const container = document.getElementById('hadithList');
+      container.innerHTML = '';
+
+      if (!list || list.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:1.5rem; color:var(--text-muted)">لا توجد أحاديث مطابقة</div>`;
+        return;
+      }
+
+      list.forEach(h => {
+        const card = document.createElement('div');
+        card.className = `hadith-card ${state.selectedHadith.id === h.id ? 'selected' : ''}`;
+        card.innerHTML = `
+          <div class="hadith-text">${h.text}</div>
+          <div class="hadith-meta">
+            <span><i class="fa-solid fa-user-pen" style="color:var(--gold-main)"></i> ${h.narrator}</span>
+            <span><i class="fa-solid fa-bookmark" style="color:var(--gold-main)"></i> ${h.source}</span>
+            <span class="badge-grade ${h.grade.includes('صحيح') || h.grade === 'صحيح' ? 'grade-sahih' : 'grade-hasan'}">${h.grade}</span>
+          </div>
+        `;
+        card.addEventListener('click', () => {
+          state.selectedHadith = h;
+          document.querySelectorAll('.hadith-card').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+        });
+        container.appendChild(card);
+      });
+    }
+
+    function pickRandomHadith() {
+      if (state.activeHadithList && state.activeHadithList.length > 0) {
+        const rand = state.activeHadithList[Math.floor(Math.random() * state.activeHadithList.length)];
+        state.selectedHadith = rand;
+        renderHadithCards(state.activeHadithList);
+      }
+    }
+
+    function updateCustomHadith() {
+      const text = document.getElementById('customHadithText').value.trim() || "اتَّقِ اللَّهِ حَيْثُمَا كُنْتَ، وَأَتْبِعِ السَّيِّئَةَ الْحَسَنَةَ تَمْحُهَا، وَخَالِقِ النَّاسَ بِخُلُقٍ حَسَنٍ.";
+      const narrator = document.getElementById('customNarrator').value.trim() || "أبو ذر ومعاذ رضي الله عنهما";
+      const source = document.getElementById('customSource').value.trim() || "جامع الترمذي";
+
+      state.selectedHadith = {
+        id: 'custom_' + Date.now(),
+        text: text,
+        narrator: narrator,
+        source: source,
+        grade: "صحيح"
+      };
+    }
+
+    /* ==========================================================
+       5. Resolution & Audio Graph
+       ========================================================== */
+    function updateCanvasResolution() {
+      if (state.aspectRatio === "9:16") {
+        canvas.width = 720;
+        canvas.height = 1280;
+      } else if (state.aspectRatio === "16:9") {
+        canvas.width = 1280;
+        canvas.height = 720;
+      } else {
+        canvas.width = 1080;
+        canvas.height = 1080;
+      }
+    }
+
     function initStudioAudioContext() {
       if (!audioCtx) {
         const AudioClass = window.AudioContext || window.webkitAudioContext;
@@ -1075,61 +1287,24 @@
         dataArray = new Uint8Array(analyserNode.frequencyBinCount);
         audioDestNode = audioCtx.createMediaStreamDestination();
       }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
+      if (audioCtx.state === 'suspended') audioCtx.resume();
     }
 
-    // Creates an authentic acoustic impulse response for Islamic Hall / Mihrab Reverb
     function createMihrabReverbBuffer(context) {
       const sampleRate = context.sampleRate;
-      const length = sampleRate * 2.2; // 2.2 seconds reverb decay
+      const length = sampleRate * 2.2;
       const buffer = context.createBuffer(2, length, sampleRate);
-      for (let channel = 0; channel < 2; channel++) {
-        const data = buffer.getChannelData(channel);
+      for (let ch = 0; ch < 2; ch++) {
+        const d = buffer.getChannelData(ch);
         for (let i = 0; i < length; i++) {
-          data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 2.5);
+          d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 2.5);
         }
       }
       return buffer;
     }
 
-    function buildStudioAudioGraph(sourceNode) {
-      initStudioAudioContext();
-
-      // Bass EQ Warmth
-      const bassNode = audioCtx.createBiquadFilter();
-      bassNode.type = "lowshelf";
-      bassNode.frequency.value = 250;
-      bassNode.gain.value = state.effects.bass ? 5.5 : 0;
-
-      // Studio Reverb
-      const convolver = audioCtx.createConvolver();
-      convolver.buffer = createMihrabReverbBuffer(audioCtx);
-
-      const wetGain = audioCtx.createGain();
-      wetGain.gain.value = state.effects.reverb ? 0.35 : 0;
-
-      const dryGain = audioCtx.createGain();
-      dryGain.gain.value = 0.95;
-
-      // Routing
-      sourceNode.connect(bassNode);
-      bassNode.connect(dryGain);
-      bassNode.connect(convolver);
-      convolver.connect(wetGain);
-
-      const masterMix = audioCtx.createGain();
-      dryGain.connect(masterMix);
-      wetGain.connect(masterMix);
-
-      masterMix.connect(analyserNode);
-      analyserNode.connect(audioCtx.destination);
-      masterMix.connect(audioDestNode);
-    }
-
     /* ==========================================================
-       5. Microphone Recording Studio
+       6. Microphone Recorder Studio
        ========================================================== */
     async function toggleMicRecording() {
       const btn = document.getElementById('micRecordBtn');
@@ -1149,7 +1324,7 @@
             realAudioPlayer.onloadedmetadata = () => {
               state.audioDuration = realAudioPlayer.duration || state.micSeconds;
             };
-            status.textContent = "✅ تم حفظ تسجيلك بصوتك بنجاح!";
+            status.textContent = "✅ تم حفظ تسجيلك بنجاح!";
           };
 
           state.micRecorder.start();
@@ -1170,7 +1345,6 @@
           alert('يرجى السماح بالوصول للمايكروفون لبدء التسجيل.');
         }
       } else {
-        // Stop recording
         state.isMicRecording = false;
         state.micRecorder.stop();
         clearInterval(state.micTimerInterval);
@@ -1180,55 +1354,7 @@
     }
 
     /* ==========================================================
-       6. Hadith Rendering
-       ========================================================== */
-    function renderHadithCards(list) {
-      const container = document.getElementById('hadithList');
-      container.innerHTML = '';
-
-      if (list.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding:1.5rem; color:var(--text-muted)">لا توجد نتائج مطابقة</div>`;
-        return;
-      }
-
-      list.forEach(h => {
-        const card = document.createElement('div');
-        card.className = `hadith-card ${state.selectedHadith.id === h.id ? 'selected' : ''}`;
-        card.innerHTML = `
-          <div class="hadith-text">${h.text}</div>
-          <div class="hadith-meta">
-            <span><i class="fa-solid fa-user-pen" style="color:var(--gold-main)"></i> ${h.narrator}</span>
-            <span><i class="fa-solid fa-bookmark" style="color:var(--gold-main)"></i> ${h.source}</span>
-            <span class="badge-grade ${h.grade === 'صحيح' ? 'grade-sahih' : 'grade-hasan'}">${h.grade}</span>
-          </div>
-        `;
-        card.addEventListener('click', () => {
-          state.selectedHadith = h;
-          document.querySelectorAll('.hadith-card').forEach(c => c.classList.remove('selected'));
-          card.classList.add('selected');
-        });
-        container.appendChild(card);
-      });
-    }
-
-    /* ==========================================================
-       7. Resolution Setup
-       ========================================================== */
-    function updateCanvasResolution() {
-      if (state.aspectRatio === "9:16") {
-        canvas.width = 720;
-        canvas.height = 1280;
-      } else if (state.aspectRatio === "16:9") {
-        canvas.width = 1280;
-        canvas.height = 720;
-      } else {
-        canvas.width = 1080;
-        canvas.height = 1080;
-      }
-    }
-
-    /* ==========================================================
-       8. High Fidelity Canvas Rendering Loop
+       7. High-Fidelity Canvas Rendering Loop
        ========================================================== */
     function startCanvasLoop() {
       function loop() {
@@ -1242,28 +1368,28 @@
       const w = canvas.width;
       const h = canvas.height;
 
-      // Draw Background
+      // Background
       if (state.bgStyle === 'custom' && state.customBgImage) {
         ctx.drawImage(state.customBgImage, 0, 0, w, h);
-        ctx.fillStyle = 'rgba(6, 10, 16, 0.75)';
+        ctx.fillStyle = 'rgba(5, 8, 14, 0.78)';
         ctx.fillRect(0, 0, w, h);
       } else if (state.bgStyle === 'royal') {
         const grad = ctx.createRadialGradient(w/2, h/2, 40, w/2, h/2, w*0.8);
         grad.addColorStop(0, '#15202e');
-        grad.addColorStop(1, '#05070a');
+        grad.addColorStop(1, '#030508');
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, w, h);
       } else if (state.bgStyle === 'emerald') {
         const grad = ctx.createRadialGradient(w*0.3, h*0.2, 30, w/2, h/2, w);
         grad.addColorStop(0, '#064e3b');
         grad.addColorStop(0.6, '#022c22');
-        grad.addColorStop(1, '#02060d');
+        grad.addColorStop(1, '#02050b');
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, w, h);
       } else {
         const grad = ctx.createLinearGradient(0, 0, 0, h);
-        grad.addColorStop(0, '#0a1017');
-        grad.addColorStop(0.5, '#05080e');
+        grad.addColorStop(0, '#090e15');
+        grad.addColorStop(0.5, '#04070c');
         grad.addColorStop(1, '#010204');
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, w, h);
@@ -1306,7 +1432,7 @@
       ctx.fillText(tagText, w / 2, badgeY + 6);
       ctx.restore();
 
-      // Hadith Text & Animation
+      // Wrapped Text
       drawWrappedText(w, h);
 
       // Visualizer & Watermark
@@ -1321,6 +1447,7 @@
       let fontSize = Math.floor(w * 0.052);
       if (state.aspectRatio === "16:9") fontSize = Math.floor(h * 0.065);
       if (words.length > 25) fontSize *= 0.85;
+      if (words.length > 50) fontSize *= 0.75;
 
       ctx.font = `bold ${fontSize}px 'Amiri', serif`;
       ctx.textAlign = 'center';
@@ -1368,7 +1495,7 @@
           } else if (item.index < state.activeWordIndex) {
             ctx.fillStyle = '#f5e7a9';
           } else {
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.72)';
           }
 
           ctx.fillText(item.text, centerX, startY);
@@ -1429,17 +1556,14 @@
     }
 
     /* ==========================================================
-       9. Playback & Voice Synchronization
+       8. Playback & Voice Synchronization
        ========================================================== */
     function togglePreviewPlayback() {
-      if (state.isPlayingPreview) {
-        stopAudio();
-      } else {
-        playRealVoice();
-      }
+      if (state.isPlayingPreview) stopAudio();
+      else playVoice();
     }
 
-    function playRealVoice() {
+    function playVoice() {
       initStudioAudioContext();
       state.isPlayingPreview = true;
       document.getElementById('previewVoiceBtn').innerHTML = `<i class="fa-solid fa-stop"></i> إيقاف الاستماع`;
@@ -1447,14 +1571,12 @@
       const words = state.selectedHadith.text.split(" ");
       const totalWords = words.length;
 
-      // Handle Real Audio / Custom / Mic
       if (state.audioMode === 'upload' || state.audioMode === 'mic') {
         if (!realAudioPlayer.src) {
-          alert('يرجى تسجيل الصوت أو رفع ملف MP3 أولاً.');
+          alert('يرجى تسجيل الصوت أو اختيار ملف أولاً.');
           stopAudio();
           return;
         }
-
         realAudioPlayer.currentTime = 0;
         realAudioPlayer.play();
 
@@ -1469,16 +1591,14 @@
         }, 50);
 
         realAudioPlayer.onended = () => stopAudio();
-
       } else {
-        // Humanized Preset & AI Mode with Web Audio Filters
         const synth = window.speechSynthesis;
         synth.cancel();
 
         const utterance = new SpeechSynthesisUtterance(state.selectedHadith.text);
         utterance.lang = 'ar-SA';
-        utterance.rate = 0.88; // Reverent slow pace
-        utterance.pitch = 0.95; // Deep human chest voice
+        utterance.rate = 0.88;
+        utterance.pitch = 0.95;
 
         const duration = (totalWords * 0.52);
         state.audioDuration = duration;
@@ -1501,13 +1621,13 @@
     function stopAudio() {
       state.isPlayingPreview = false;
       state.activeWordIndex = -1;
-      document.getElementById('previewVoiceBtn').innerHTML = `<i class="fa-solid fa-play"></i> استماع للإلقاء الصوتي البشري مع المؤثرات`;
+      document.getElementById('previewVoiceBtn').innerHTML = `<i class="fa-solid fa-play"></i> استماع للإلقاء الصوتي مع المؤثرات`;
       if ('speechSynthesis' in window) window.speechSynthesis.cancel();
       if (realAudioPlayer) realAudioPlayer.pause();
     }
 
     /* ==========================================================
-       10. Video Recording Engine & Export
+       9. Video Recording Engine & Export
        ========================================================== */
     async function generateFinalVideo() {
       initStudioAudioContext();
@@ -1529,7 +1649,6 @@
         totalDuration = realAudioPlayer.duration + 0.8;
       }
 
-      // Capture Canvas at 30fps
       const canvasStream = canvas.captureStream(30);
       const combinedStream = new MediaStream([
         ...canvasStream.getVideoTracks(),
@@ -1559,7 +1678,6 @@
       state.isRecording = true;
       recorder.start();
 
-      // Trigger Audio for Recording
       if (state.audioMode === 'upload' || state.audioMode === 'mic') {
         realAudioPlayer.currentTime = 0;
         realAudioPlayer.play();
@@ -1576,7 +1694,7 @@
         const progress = Math.min(1, elapsed / totalDuration);
         state.activeWordIndex = Math.min(totalWords - 1, Math.floor(progress * totalWords));
 
-        status.textContent = `جاري التصدير بالصوت البشري... ${Math.floor(progress * 100)}%`;
+        status.textContent = `جاري التصدير والمعالجة... ${Math.floor(progress * 100)}%`;
 
         if (elapsed >= totalDuration) {
           clearInterval(sync);
@@ -1593,7 +1711,7 @@
 
       player.src = url;
       download.href = url;
-      download.download = `Hadith_Human_Voice_${Date.now()}.mp4`;
+      download.download = `Hadith_Video_${Date.now()}.mp4`;
 
       share.onclick = async () => {
         const file = new File([blob], `Hadith_Video.mp4`, { type: 'video/mp4' });
